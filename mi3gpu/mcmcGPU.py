@@ -240,7 +240,7 @@ class MCMCGPU:
                      flags=cf.READ_WRITE):
         flags = flags | cf.ALLOC_HOST_PTR
 
-        nelem = int(np.product(bufshape))
+        nelem = int(np.prod(bufshape))
         if pad:
             nelem = nelem + pad
 
@@ -557,7 +557,7 @@ class MCMCGPU:
         self.log("min_buf")
 
         bufdev = self.bufs[buf]
-        buflen = np.product(self.buf_spec[buf][1])
+        buflen = np.prod(self.buf_spec[buf][1])
 
         vsize = 1024
         local_min = cl.LocalMemory(vsize*np.dtype(np.float32).itemsize)
@@ -676,7 +676,7 @@ class MCMCGPU:
         src = self.bufs[srcname]
         if dst.size != src.size:
             raise Exception('Tried to add bufs of different sizes')
-        buflen = np.product(self.buf_spec[dstname][1])
+        buflen = np.prod(self.buf_spec[dstname][1])
         nworkunits = self.wgsize*((buflen-1)//self.wgsize+1)
 
         return self.logevt('addbuf',

@@ -1153,7 +1153,7 @@ def process_potts_args(args, L, q, unimarg, log):
 
     log("")
     return attrdict({'L': L, 'q': q, 'alpha': alpha,
-                     'couplings': couplings})
+                     'couplings': couplings, 'unimarg': unimarg})
 
 def getCouplings(args, L, q, unimarg, log):
     couplings = None
@@ -1355,7 +1355,10 @@ class CLInfoAction(configargparse.Action):
         printGPUs(print)
         parser.exit()
 
-def main(args):
+def main():
+    setup_exit_hook(print)
+    args = sys.argv[1:]
+
     actions = {
       'infer':   inverseIsing,
       'energies':    getEnergies,
@@ -1396,5 +1399,4 @@ def main(args):
     actions[known_args.action](args, remaining_args, print)
 
 if __name__ == '__main__':
-    setup_exit_hook(print)
-    main(sys.argv[1:])
+    main()

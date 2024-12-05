@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools", "wheel", "setuptools-git-versioning", "numpy"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["mi3gpu*"]
+
+[tool.setuptools-git-versioning]
+enabled = true
+
+[project]
+name = "mi3gpu"
+authors = [{name = "Allan Haldane", email = "allan.haldane@temple.edu"}]
+description = "Monte Carlo Inverse Ising Inference on GPUs"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: GPLv3",
+    "Operating System :: OS Independent",
+    "numpy >= 2.0",
+    "scipy>=1.0.0",
+    "pyopencl",
+    "configargparse",
+]
+dependencies = [
+    "numpy >= 2.0",
+    "scipy >= 1.0.0",
+    "pyopencl",
+    "configargparse",
+]
+dynamic =["version" ]
+
+[project.scripts]
+"Mi3.py" = "mi3gpu.Mi3:main"
+"getMarginals.py" = "mi3gpu.utils.getMarginals:main"
+"pseudocount.py" = "mi3gpu.utils.pseudocount:main"
+"phyloWeights.py" = "mi3gpu.utils.phyloWeights:main"
+"subsample_MSA.py" = "mi3gpu.utils.subsample_MSA:main"
+"getSeqEnergies.py" = "mi3gpu.utils.getSeqEnergies:main"
+"changeGauge.py" = "mi3gpu.utils.changeGauge:main"
+"getXij.py" = "mi3gpu.utils.getXij:main"
+"ijscores.py" = "mi3gpu.utils.ijscores:main"
+"exploreParam.py" = "mi3gpu.utils.exploreParam:main"
+"alphabet_reduction.py" = "mi3gpu.utils.alphabet_reduction:main"
+"apply_alphamap.py" = "mi3gpu.utils.apply_alphamap:main"
+"reverse_alphamap.py" = "mi3gpu.utils.reverse_alphamap:main"
+"pre_regularize.py" = "mi3gpu.utils.pre_regularize:main"
