@@ -2,7 +2,7 @@
 import setuptools
 import numpy
 
-seqtools_module = setuptools.Extension('mi3gpu.utils.seqtools_c',
+seqtools_module = setuptools.Extension('mi3gpu.utils.seqtools',
                     sources = ['mi3gpu/utils/seqtools.c'],
                     include_dirs=[numpy.get_include()],
                     extra_compile_args = ['-O3', '-Wall'])
