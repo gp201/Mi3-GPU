@@ -1,0 +1,10 @@
+.git
+__pycache__
+*.egg-info
+*.pyc
+*.so
+build/
+dist/
+examples/
+extras/
+*.md
