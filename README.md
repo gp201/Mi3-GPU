@@ -28,19 +28,19 @@ docker build -t mi3gpu .
 Run Mi3-GPU with NVIDIA GPU access:
 
 ```bash
-docker run --gpus all mi3gpu [arguments]
+docker run --user $(id -u):$(id -g) --gpus all -e PYTHONUNBUFFERED=1 mi3gpu [arguments]
 ```
 
 Run a utility script (e.g., `getMarginals.py`):
 
 ```bash
-docker run --gpus all --entrypoint getMarginals.py mi3gpu [arguments]
+docker run --user $(id -u):$(id -g) --gpus all -e PYTHONUNBUFFERED=1 --entrypoint getMarginals.py mi3gpu [arguments]
 ```
 
 To mount a local data directory into the container:
 
 ```bash
-docker run --gpus all -v /path/to/data:/data mi3gpu -i /data/input.fasta
+docker run --user $(id -u):$(id -g) --gpus all -e PYTHONUNBUFFERED=1 -v /path/to/data:/data mi3gpu -i /data/input.fasta
 ```
 
 **Note:** Running with GPU support requires the [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) to be installed on the host.
