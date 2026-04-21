@@ -552,7 +552,7 @@ def getEnergies(orig_args, args, log):
                                      description=descr)
     add = parser.add_argument
     add('out', default='output', help='Output File')
-    addopt(parser, 'GPU Options',         'wgsize gpus profile')
+    addopt(parser, 'GPU Options',         'wgsize gpus profile beta')
     addopt(parser, 'Potts Model Options', 'alpha couplings')
     addopt(parser, 'Sequence Options',    'seqs')
     addopt(parser,  None,                 'outdir')
@@ -875,7 +875,7 @@ def subseqFreq(orig_args, args, log):
                                      description=descr)
     add = parser.add_argument
     add('fixpos', help="comma separated list of fixed positions")
-    add('--iterbackgrounds', action='store_true', 
+    add('--iterbackgrounds', action='store_true',
         help='use if backgrounds is small')
     addopt(parser, 'GPU options',         'nsteps wgsize '
                                           'gpus profile beta')
